@@ -1,0 +1,5 @@
+@import './variables';
+
+@function grid-width($n) {
+  @return $n * $grid-width + ($n - 1) * $gutter-width;
+}

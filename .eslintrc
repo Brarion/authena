@@ -1,0 +1,32 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "es2017": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:sonarjs/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "tsconfigRootDir": "."
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "sonarjs"
+  ],
+  "rules": {
+    "no-var": "error",
+    "indent": [
+      "error",
+      2
+    ],
+    "no-multi-spaces": "error",
+    "space-in-parens": "error",
+    "no-multiple-empty-lines": "error",
+    "prefer-const": "error"
+  }
+}

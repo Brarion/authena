@@ -1,0 +1,23 @@
+@import '../../styles/colors';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .eye {
+    margin-right: 20px;
+  }
+
+  .title {
+    font-family: 'Jura', sans-serif;
+    font-size: 20px;
+    color: $green;
+    letter-spacing: 0.7em;
+    line-height: 24px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
