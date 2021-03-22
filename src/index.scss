@@ -1,10 +1,16 @@
 @import './styles/variables.scss';
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0 $gutter-width / 2;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  height: 100%;
 }
 
 code {

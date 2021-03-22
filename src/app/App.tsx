@@ -3,7 +3,7 @@ import { Routes } from '../routes'
 
 export const App = () => {
   return (
-    <div>
+    <div style={{ height: '100%' }}>
       <Header />
       <Routes />
     </div>
