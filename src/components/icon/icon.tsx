@@ -1,8 +1,6 @@
-import React from 'react'
-
 import { ReactComponent as Eye } from '../../assets/authena.svg'
 
-import * as styles from './styles.module.scss'
+import styles from './styles.module.scss'
 
 export const Icon = () => {
   return (

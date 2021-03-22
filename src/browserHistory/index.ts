@@ -1,0 +1,1 @@
+export { browserHistory } from './browserHistory'

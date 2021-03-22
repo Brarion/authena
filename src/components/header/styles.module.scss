@@ -1,0 +1,27 @@
+@import '../../styles/grid';
+@import '../../styles/variables';
+
+.wrapper {
+  padding: 23px 0 19px 0;
+
+  display: grid;
+  grid-template-columns: grid-width(3) auto grid-width(4);
+  gap: $gutter-width;
+
+  .user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .fio {
+      display: flex;
+      align-items: center;
+
+      margin-right: 30px;
+
+      > svg {
+        margin-right: 10px;
+      }
+    }
+  }
+}

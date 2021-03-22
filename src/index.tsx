@@ -2,17 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router } from 'react-router-dom'
 
-import { historyModel } from './models/history'
-
 import { App } from './app'
+
+import { browserHistory } from './browserHistory'
 
 import './index.scss'
 
 const Index = () => {
-  const { history } = historyModel
-
   return (
-    <Router history={history}>
+    <Router history={browserHistory}>
       <App />
     </Router>
   )
