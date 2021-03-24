@@ -1,8 +1,7 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router } from 'react-router-dom'
+import { BrowserRouter, Router } from 'react-router-dom'
 
-import { App } from './app'
+import { Routes } from './routes'
 
 import { browserHistory } from './browserHistory'
 
@@ -11,14 +10,14 @@ import './index.scss'
 const Index = () => {
   return (
     <Router history={browserHistory}>
-      <App />
+      <Routes />
     </Router>
   )
 }
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <Index />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('root')
 )

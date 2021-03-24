@@ -1,0 +1,132 @@
+@import '../../styles/colors';
+
+.leftSide {
+  display: grid;
+  grid-template-rows: max-content auto max-content;
+  gap: 30px;
+
+  .completedCourses {
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 20px;
+    background-color: $gray-1;
+    border-radius: 20px;
+
+    > p {
+      margin-right: 10px;
+
+      font: {
+        size: 14px;
+        weight: 700;
+      }
+      color: $green-2;
+
+      line-height: 19px;
+      white-space: nowrap;
+    }
+
+    .btn {
+      position: relative;
+      height: 100%;
+      width: 100%;
+
+      > * {
+        position: absolute;
+        height: 100%;
+      }
+
+      > *:last-child {
+        z-index: 10;
+        left: 30%;
+        bottom: 2.5px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: $gray-3;
+    border-radius: 20px;
+
+    .menuItem {
+      height: 52px;
+
+      padding: 0 22px;
+
+      display: grid;
+      grid-template-columns: 18px auto;
+      gap: 15px;
+      align-items: center;
+
+      font-size: 16px;
+      color: $gray-2;
+
+      &.currentItemMenu {
+        position: relative;
+
+        color: $green-2;
+
+        > svg > path {
+          fill: $green-2;
+        }
+
+        .verticalLine {
+          position: absolute;
+          background-color: $green-2;
+
+          height: 100%;
+          width: 5px;
+
+          border-radius: 18px;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .path {
+    width: 230px;
+    height: 210px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: linear-gradient(129.46deg, #FFD653 1.81%, #EF4B23 100%), #F5F7F7;
+    border-radius: 30px;
+
+    .pathTitle {
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 19px;
+
+      color: white;
+
+      margin-bottom: 4px;
+    }
+
+    .percents {
+      font-weight: 800;
+      font-size: 72px;
+      line-height: 98px;
+
+      color: transparent;
+      -webkit-text-stroke: 1px white;
+    }
+  }
+}

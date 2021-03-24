@@ -1,6 +1,5 @@
 @import '../../styles/grid.scss';
 @import '../../styles/variables.scss';
-@import '../../styles/colors.scss';
 
 main {
   height: calc(100% - #{$headerHeight});
@@ -8,55 +7,4 @@ main {
   display: grid;
   grid-template-columns: grid-width(3) auto grid-width(4);
   gap: 30px;
-}
-
-.leftSide {
-  display: grid;
-  grid-auto-rows: auto;
-  gap: 30px;
-
-  .completedCourses {
-    height: 100px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 20px;
-    background-color: $gray-1;
-    border-radius: 20px;
-
-    > p {
-      margin-right: 10px;
-
-      font: {
-        size: 14px;
-        weight: 700;
-      }
-      color: $green-2;
-
-      line-height: 19px;
-      white-space: nowrap;
-    }
-
-    .btn {
-      position: relative;
-      height: 100%;
-      width: 100%;
-
-      >* {
-        position: absolute;
-        height: 100%;
-      }
-
-      >*:last-child {
-        z-index: 10;
-        left: 30%;
-        bottom: 2.5px;
-      }
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
 }

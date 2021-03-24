@@ -10,7 +10,7 @@ export const Routes = () => {
         {routes.map((route) => (
           <Route key={route.path} path={route.path} exact={route.exact} component={route.component} />
         ))}
-        <Redirect to="/" />
+        {routes.find((route) => route.path === location.pathname) === undefined && <Redirect to={'/404'} />}
       </Switch>
     </Suspense>
   )

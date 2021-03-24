@@ -5,12 +5,12 @@ html {
 }
 
 body {
-  margin: 0 $gutter-width / 2;
+  margin: 0 $main-padding;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  height: 100%;
+  height: calc(100% - #{$main-padding});
 }
 
 code {
