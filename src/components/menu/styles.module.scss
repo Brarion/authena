@@ -71,6 +71,10 @@
       font-size: 16px;
       color: $gray-2;
 
+      >*:first-child {
+        margin: 0 auto;
+      }
+
       &.currentItemMenu {
         position: relative;
 
