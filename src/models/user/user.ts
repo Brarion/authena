@@ -15,7 +15,7 @@ const userDomain = createDomain('user')
 const $user = userDomain.createStore<TUser | null>({ name: 'Киша', surname: 'Молесников', percents: '72' })
 
 export const userModel = {
-  $store: combine({
+  $store: combine<{ user: TUser | null }>({
     user: $user,
   }),
   gate,

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { useTitle } from '../../utils'
 
 import { Header } from '../../components/header'

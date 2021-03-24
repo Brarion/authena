@@ -13,7 +13,7 @@ const $search = searchDomain
   .reset(gate.open)
 
 export const searchModel = {
-  $store: combine({
+  $store: combine<{ search: string }>({
     search: $search,
   }),
   input: {

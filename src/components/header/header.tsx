@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { useGate, useStore } from 'effector-react'
 
 import { Icon } from '../icon'

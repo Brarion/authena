@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { ReactComponent as Eye } from '../../assets/authena.svg'
 
 import styles from './styles.module.scss'
