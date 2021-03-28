@@ -1,0 +1,126 @@
+@import '../../styles/colors';
+
+.card {
+  position: relative;
+
+  padding: 30px 60px 30px 30px;
+
+  background-color: white;
+  border-radius: 30px;
+
+  font-size: 14px;
+  line-height: 19px;
+
+  overflow: hidden;
+
+  color: $green-1;
+
+  cursor: pointer;
+
+  &.greenCard {
+    background-color: $green-1;
+
+    color: white;
+
+    > h2 {
+      color: white;
+    }
+
+    .progressAll {
+      background-color: $green-5;
+      opacity: 1;
+    }
+
+    .progress {
+      background: linear-gradient(129.46deg, #8BF3E1 1.81%, #0C959D 100%), #F5F7F7;
+    }
+  }
+
+  .percents {
+    position: absolute;
+
+    top: 10px;
+    right: 20px;
+
+    color: $yellow;
+    font-size: 14px;
+  }
+
+  > h2 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+
+    margin-bottom: 20px;
+
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .period {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 5px;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+  }
+
+  .teachers {
+    width: 100%;
+    display: inline-flex;
+
+    margin-bottom: 10px;
+
+    > div {
+      display: grid;
+      gap: 5px;
+
+      margin-left: 15px;
+
+      overflow: hidden;
+
+      .teacher {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .works {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 15px;
+  }
+
+  .progressAll {
+    position: absolute;
+
+    height: 5px;
+    width: 100%;
+
+    bottom: 0;
+    left: 0;
+
+    background-color: $green-4;
+    opacity: 0.2;
+  }
+
+  .progress {
+    position: absolute;
+
+    height: 5px;
+
+    bottom: 0;
+    left: 15px;
+
+    background: linear-gradient(129.46deg, #FFD653 1.81%, #EF4B23 100%), #F5F7F7;
+    border-radius: 18px;
+  }
+}
+

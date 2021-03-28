@@ -19,6 +19,9 @@
     "@typescript-eslint",
     "prettier"
   ],
+  "globals": {
+    "JSX": true
+  },
   "rules": {
     "no-var": "error",
     "no-multi-spaces": "error",

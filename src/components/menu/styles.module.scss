@@ -2,7 +2,7 @@
 
 .leftSide {
   display: grid;
-  grid-template-rows: max-content auto max-content;
+  grid-template-rows: max-content 435px max-content;
   gap: 30px;
 
   .completedCourses {
