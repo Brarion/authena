@@ -1,0 +1,188 @@
+@import '../../styles/colors';
+
+.wrapper {
+  display: grid;
+  grid-auto-rows: max-content;
+  row-gap: 10px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 44px;
+
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: $green-2;
+
+    .dropdowns {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 30px;
+
+      .year, .month {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 10px;
+
+        align-items: center;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 15px;
+
+      > * {
+        width: 44px;
+        height: 44px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $gray-1;
+        border-radius: 15px;
+
+        cursor: pointer;
+      }
+    }
+  }
+
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 44px);
+    gap: 10px;
+    align-items: center;
+
+    height: 44px;
+
+    background-color: $gray-1;
+    border-radius: 15px;
+
+    > * {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: $green-2;
+
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  .littleCalendar {
+    display: grid;
+    grid-template-columns: repeat(7, 44px);
+    grid-template-rows: repeat(6, 44px);
+
+    gap: 10px;
+
+    margin-bottom: 97px;
+
+    > * {
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      overflow: hidden;
+
+      font-size: 16px;
+      line-height: 22px;
+
+      border-radius: 15px;
+
+      color: $gray-4;
+
+      &.currentMonth {
+        color: $gray-5;
+        background-color: $gray-1;
+      }
+
+      &.currentDay {
+        color: white;
+        background-color: $green-3;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        box-shadow: 2px 2px 9px rgba(4, 55, 48, 0.37);
+      }
+
+      > svg {
+        position: absolute;
+
+        top: 0;
+        right: 6px;
+      }
+    }
+  }
+
+  > h2 {
+    margin-bottom: 10px;
+  }
+
+  .currentWorks {
+    display: grid;
+    gap: 10px;
+
+    overflow-y: auto;
+    max-height: 320px;
+
+    .work {
+      height: calc(100px - 2 * 20px);;
+
+      padding: 20px;
+
+      display: grid;
+      grid-template-columns: auto 60px;
+      gap: 60px;
+
+      align-items: center;
+
+      background-color: $gray-1;
+      color: $green-1;
+      font-size: 14px;
+      line-height: 19px;
+
+      border-radius: 20px;
+
+      &.cool {
+        background-color: $green-1;
+        color: white;
+      }
+
+      >*:first-child {
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        >*:first-child {
+          font-weight: bold;
+        }
+
+        >*:last-child {
+          display: grid;
+          grid-template-columns: repeat(3, max-content);
+          gap: 5px;
+
+          align-items: center;
+        }
+      }
+    }
+  }
+}

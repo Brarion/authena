@@ -3,7 +3,7 @@
 @import '../../styles/colors.scss';
 
 .main {
-  height: calc(100% - #{$headerHeight});
+  max-height: calc(100% - #{$headerHeight});
 
   display: grid;
   grid-template-columns: grid-width(3) auto grid-width(4);

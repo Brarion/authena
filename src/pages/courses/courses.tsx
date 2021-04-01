@@ -6,6 +6,7 @@ import { Header } from '../../components/header'
 import { Menu } from '../../components/menu'
 import { CourseCard } from '../../components/courseCard'
 import { MainWrapper } from '../../components/mainWrapper'
+import { LittleCalendar } from '../../components/littleCalendar'
 
 import styles from './styles.module.scss'
 
@@ -40,7 +41,7 @@ export const Courses = () => {
             ))
           )}
         </MainWrapper>
-        <div>Hello</div>
+        <LittleCalendar />
       </main>
     </div>
   )
