@@ -165,3 +165,64 @@ export const coursesMock: CourseCard[] = [
     countOfWorks: 6,
   },
 ]
+
+type CalendarWorks = {
+  date: Date
+  works: Array<{
+    title: string
+    allCount: number
+    count: number
+    checkingCount: number
+    percent: number
+  }>
+}
+
+export const calendarWorksMock: CalendarWorks[] = [
+  {
+    date: new Date(2021, 3, 2),
+    works: [
+      {
+        title: 'Механика',
+        allCount: 6,
+        count: 4,
+        checkingCount: 2,
+        percent: 87,
+      },
+      {
+        title: 'Оптика и квантовая физика',
+        allCount: 6,
+        count: 4,
+        checkingCount: 1,
+        percent: 31,
+      },
+      {
+        title: 'Элементы астрофизики',
+        allCount: 6,
+        count: 4,
+        checkingCount: 2,
+        percent: 18,
+      },
+      {
+        title: 'Механика',
+        allCount: 6,
+        count: 4,
+        checkingCount: 2,
+        percent: 87,
+      },
+      {
+        title: 'Механика',
+        allCount: 6,
+        count: 4,
+        checkingCount: 2,
+        percent: 87,
+      },
+      {
+        title: 'Механика',
+        allCount: 6,
+        count: 4,
+        checkingCount: 2,
+        percent: 87,
+      },
+    ],
+  },
+]
