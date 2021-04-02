@@ -18,7 +18,7 @@ export const Courses = () => {
   useTitle('Курсы')
 
   return (
-    <div>
+    <div style={{height: '100%'}}>
       <Header />
       <main className={styles.main}>
         <Menu />

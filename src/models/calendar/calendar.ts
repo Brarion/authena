@@ -1,5 +1,13 @@
-import { combine, createDomain, sample } from 'effector'
-import { calendarWorksMock } from '../../mock/mock'
+import {combine, createDomain, sample} from 'effector'
+import {calendarWorksMock} from '../../mock/mock'
+
+type CurrentWork = {
+  title: string
+  allCount: number
+  count: number
+  checkingCount: number
+  percent: number
+}
 
 const calendarDomain = createDomain('calendar')
 
@@ -42,15 +50,7 @@ const $monthCalendar = calendarDomain.createStore<Date[]>(
   })()
 )
 
-const $currentWorks = calendarDomain.createStore<
-  Array<{
-    title: string
-    allCount: number
-    count: number
-    checkingCount: number
-    percent: number
-  }>
->(
+const $currentWorks = calendarDomain.createStore<CurrentWork[]>(
   (function () {
     const currentDayWorks = calendarWorksMock.find(
       (dayWorks) =>
@@ -64,33 +64,42 @@ const $currentWorks = calendarDomain.createStore<
 )
 
 sample({
-  source: combine({
+  source: combine<{
+    currentMonth: number,
+    currentYear: number,
+  }>({
     currentMonth: $currentMonth,
     currentYear: $currentYear,
   }),
   clock: decMonth,
   target: $currentYear,
-  fn: ({ currentMonth, currentYear }) => (currentMonth === 11 ? currentYear - 1 : currentYear),
+  fn: ({currentMonth, currentYear}) => (currentMonth === 11 ? currentYear - 1 : currentYear),
 })
 
 sample({
-  source: combine({
+  source: combine<{
+    currentMonth: number,
+    currentYear: number,
+  }>({
     currentMonth: $currentMonth,
     currentYear: $currentYear,
   }),
   clock: incMonth,
   target: $currentYear,
-  fn: ({ currentMonth, currentYear }) => (currentMonth === 0 ? currentYear + 1 : currentYear),
+  fn: ({currentMonth, currentYear}) => (currentMonth === 0 ? currentYear + 1 : currentYear),
 })
 
 sample({
-  source: combine({
+  source: combine<{
+    currentMonth: number,
+    currentYear: number,
+  }>({
     currentMonth: $currentMonth,
     currentYear: $currentYear,
   }),
   clock: [$currentDay.updates, $currentMonth.updates, $currentYear.updates],
   target: $monthCalendar,
-  fn: ({ currentMonth, currentYear }) => {
+  fn: ({currentMonth, currentYear}) => {
     const today = new Date(currentYear, currentMonth, 1)
 
     const predMonday =
@@ -113,7 +122,7 @@ sample({
     currentYear: $currentYear,
   }),
   target: $currentWorks,
-  fn: ({ currentDay, currentMonth, currentYear }) => {
+  fn: ({currentDay, currentMonth, currentYear}) => {
     const currentDayWorks = calendarWorksMock.find(
       (dayWorks) =>
         dayWorks.date.getDate() === currentDay &&
@@ -126,7 +135,13 @@ sample({
 })
 
 export const calendarModel = {
-  $store: combine({
+  $store: combine<{
+    currentDay: number,
+    currentMonth: number,
+    currentYear: number,
+    monthCalendar: Date[],
+    currentWorks: CurrentWork[],
+  }>({
     currentDay: $currentDay,
     currentMonth: $currentMonth,
     currentYear: $currentYear,

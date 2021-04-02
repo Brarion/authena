@@ -193,7 +193,7 @@ export const calendarWorksMock: CalendarWorks[] = [
         allCount: 6,
         count: 4,
         checkingCount: 1,
-        percent: 31,
+        percent: 69,
       },
       {
         title: 'Элементы астрофизики',

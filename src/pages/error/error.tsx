@@ -1,5 +1,5 @@
 import React from 'react'
 
 export const Error404 = () => {
-  return <div>Пошёл нахуй долбаёб</div>
+  return <div>404</div>
 }

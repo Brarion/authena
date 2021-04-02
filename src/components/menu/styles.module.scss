@@ -2,8 +2,10 @@
 
 .leftSide {
   display: grid;
-  grid-template-rows: max-content 435px max-content;
+  grid-template-rows: max-content auto max-content;
   gap: 30px;
+
+  height: 100%;
 
   .completedCourses {
     height: 100px;
@@ -80,6 +82,8 @@
 
         color: $green-2;
 
+        background-color: $gray-1;
+
         > svg > path {
           fill: $green-2;
         }
@@ -111,7 +115,7 @@
     flex-direction: column;
     justify-content: center;
 
-    background: linear-gradient(129.46deg, #FFD653 1.81%, #EF4B23 100%), #F5F7F7;
+    background: url('../../assets/owlBackground.svg');
     border-radius: 30px;
 
     .pathTitle {

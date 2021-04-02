@@ -4,6 +4,8 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 import { routes } from './config'
 
 export const Routes = () => {
+
+  console.log(location.pathname)
   return (
     <Suspense fallback={null}>
       <Switch>

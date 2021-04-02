@@ -87,7 +87,7 @@
 
     gap: 10px;
 
-    margin-bottom: 97px;
+    margin-bottom: 49px;
 
     > * {
       position: relative;
@@ -164,23 +164,49 @@
         color: white;
       }
 
-      >*:first-child {
+      &:hover {
+        cursor: pointer;
+      }
+
+      > *:first-child {
         height: 100%;
 
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        >*:first-child {
+        > *:first-child {
           font-weight: bold;
         }
 
-        >*:last-child {
+        > *:last-child {
           display: grid;
           grid-template-columns: repeat(3, max-content);
           gap: 5px;
 
           align-items: center;
+        }
+      }
+
+      .progress {
+        position: relative;
+        > figure {
+          transform: rotateZ(0.75turn);
+        }
+
+        .text {
+          position: absolute;
+          top: 23px;
+          left: 15px;
+
+          font-size: 14px;
+          line-height: 19px;
+
+          color: $yellow-1;
+
+          &.cool {
+            color: $yellow;
+          }
         }
       }
     }
