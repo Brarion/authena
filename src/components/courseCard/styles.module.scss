@@ -15,7 +15,14 @@
 
   color: $green-1;
 
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+
+    box-shadow: 1px 1px 3px rgba(4, 55, 48, 0.37);
+  }
+
+  height: calc(246px - 2 * 30px);
+  width: calc(350px - 30px - 60px);
 
   &.greenCard {
     background-color: $green-1;

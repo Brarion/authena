@@ -2,9 +2,7 @@ import React from 'react'
 
 import { useStore } from 'effector-react'
 
-import { userModel } from '../../models/user'
-
-import { browserHistory } from '../../browserHistory'
+import { userModel } from '../../models'
 
 import { menuRoutesPaths, routesPaths } from '../../routes/config'
 
@@ -38,28 +36,28 @@ export const Menu = () => {
   return (
     <>
       <div className={styles.leftSide}>
-        <div className={styles.completedCourses} onClick={() => browserHistory.push(routesPaths.completedCourses.path)}>
+        <div className={styles.completedCourses}>
           <p>
             Успешно
             <br />
             завершенные курсы
           </p>
-          <div className={styles.btn}>
+          <a href={routesPaths.completedCourses.path} className={styles.btn}>
             <EllipseBtn />
             <WhiteArrow />
-          </div>
+          </a>
         </div>
         <div className={styles.menu}>
           {menuRoutesPaths.map((route) => (
-            <div
+            <a
               key={route.path}
               className={`${styles.menuItem} ${location.pathname === route.path ? styles.currentItemMenu : ''}`}
-              onClick={() => browserHistory.push(route.path)}
+              href={route.path}
             >
               {getIcon(route.path)}
               <div>{route.title}</div>
               {location.pathname === route.path && <div className={styles.verticalLine} />}
-            </div>
+            </a>
           ))}
         </div>
         <div className={styles.path}>

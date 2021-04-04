@@ -5,8 +5,8 @@ import { useGate, useStore } from 'effector-react'
 import { Icon } from '../icon'
 import { Search } from '../search'
 
-import { searchModel } from '../../models/search'
-import { userModel } from '../../models/user'
+import { searchModel } from '../../models'
+import { userModel } from '../../models'
 
 import { ReactComponent as SearchIcon } from '../../assets/search.svg'
 import { ReactComponent as Logout } from '../../assets/logout.svg'

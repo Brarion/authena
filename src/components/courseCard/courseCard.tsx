@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { routesPaths } from '../../routes/config'
+
 import { ReactComponent as Ellipse } from '../../assets/ellipse.svg'
 import { ReactComponent as TeacherIcon } from '../../assets/teacherIcon.svg'
 import { ReactComponent as Pen } from '../../assets/pen.svg'
@@ -8,6 +10,7 @@ import styles from './styles.module.scss'
 
 interface CourseCardProps {
   title: string
+  id: number
   percents: number
   years: { start: number; end: number }
   semester: number
@@ -15,9 +18,12 @@ interface CourseCardProps {
   countOfWorks: number
 }
 
-export const CourseCard = ({ title, percents, years, semester, teachers, countOfWorks }: CourseCardProps) => {
+export const CourseCard = ({ title, id, percents, years, semester, teachers, countOfWorks }: CourseCardProps) => {
   return (
-    <div className={`${styles.card} ${percents >= 70 ? styles.greenCard : ''}`}>
+    <a
+      href={`${routesPaths.courses.path}/${id}`}
+      className={`${styles.card} ${percents >= 70 ? styles.greenCard : ''}`}
+    >
       <div className={styles.percents}>{`${percents}%`}</div>
       <h2>{title}</h2>
       <div className={styles.period}>
@@ -43,6 +49,6 @@ export const CourseCard = ({ title, percents, years, semester, teachers, countOf
       </div>
       <div className={styles.progressAll} />
       <div className={styles.progress} style={{ width: `calc(${percents}% - 30px)` }} />
-    </div>
+    </a>
   )
 }

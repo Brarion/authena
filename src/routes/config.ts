@@ -2,6 +2,7 @@ import { lazy } from 'react'
 import { AppRoute } from './types'
 
 const Courses = lazy(() => import('../pages/courses/index').then((page) => ({ default: page.Courses })))
+const Course = lazy(() => import('../pages/course/index').then((page) => ({ default: page.Course })))
 const CompletedCourses = lazy(() =>
   import('../pages/completedCourses/index').then((page) => ({ default: page.CompletedCourses }))
 )
@@ -12,10 +13,16 @@ const Error404 = lazy(() => import('../pages/error/index').then((page) => ({ def
 
 export const routes: AppRoute[] = [
   {
-    title: 'Курсы',
-    path: '/',
+    title: 'Текущие курсы',
+    path: '/courses',
     exact: true,
     component: Courses,
+  },
+  {
+    title: 'Курс',
+    path: '/courses/:id',
+    exact: true,
+    component: Course,
   },
   {
     title: 'Успешно завершенные курсы',
@@ -51,8 +58,8 @@ export const routes: AppRoute[] = [
 
 export const routesPaths = {
   courses: {
-    title: 'Курсы',
-    path: '/',
+    title: 'Текущие курсы',
+    path: '/courses',
   },
   completedCourses: {
     title: 'Успешно завершенные курсы',
@@ -74,8 +81,8 @@ export const routesPaths = {
 
 export const menuRoutesPaths: Array<{ title: string; path: string }> = [
   {
-    title: 'Курсы',
-    path: '/',
+    title: 'Текущие курсы',
+    path: '/courses',
   },
   {
     title: 'Календарь',

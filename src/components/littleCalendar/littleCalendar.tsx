@@ -1,20 +1,20 @@
 import React from 'react'
 
-import {useStore} from 'effector-react'
+import { useStore } from 'effector-react'
 
-import {calendarModel} from '../../models/calendar'
+import { calendarModel } from '../../models'
 
-import {ReactComponent as Left} from '../../assets/left.svg'
-import {ReactComponent as Right} from '../../assets/right.svg'
-import {ReactComponent as DropdownArrow} from '../../assets/dropdownArrow.svg'
-import {ReactComponent as Flag} from '../../assets/flag.svg'
-import {ReactComponent as Ellipse} from '../../assets/ellipse.svg'
+import { ReactComponent as Left } from '../../assets/left.svg'
+import { ReactComponent as Right } from '../../assets/right.svg'
+import { ReactComponent as DropdownArrow } from '../../assets/dropdownArrow.svg'
+import { ReactComponent as Flag } from '../../assets/flag.svg'
+import { ReactComponent as Ellipse } from '../../assets/ellipse.svg'
 
 import styles from './styles.module.scss'
-import {calendarWorksMock} from '../../mock/mock'
+import { calendarWorksMock } from '../../mock/mock'
 
 export const LittleCalendar = () => {
-  const {currentDay, currentMonth, currentYear, monthCalendar, currentWorks} = useStore(calendarModel.$store)
+  const { currentDay, currentMonth, currentYear, monthCalendar, currentWorks } = useStore(calendarModel.$store)
 
   const getMonthName = (): string => {
     return [
@@ -39,19 +39,19 @@ export const LittleCalendar = () => {
         <div className={styles.dropdowns}>
           <div className={styles.year}>
             <div>{currentYear}</div>
-            <DropdownArrow/>
+            <DropdownArrow />
           </div>
           <div className={styles.month}>
             <div>{getMonthName()}</div>
-            <DropdownArrow/>
+            <DropdownArrow />
           </div>
         </div>
         <div className={styles.buttons}>
           <div onClick={() => calendarModel.input.decMonth()}>
-            <Left/>
+            <Left />
           </div>
           <div onClick={() => calendarModel.input.incMonth()}>
-            <Right/>
+            <Right />
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ export const LittleCalendar = () => {
                 dayWorks.date.getDate() === day.getDate() &&
                 dayWorks.date.getMonth() === day.getMonth() &&
                 dayWorks.date.getFullYear() === day.getFullYear()
-            ) >= 0 && <Flag/>}
+            ) >= 0 && <Flag />}
           </div>
         ))}
       </div>
@@ -92,22 +92,25 @@ export const LittleCalendar = () => {
                 <div>{work.title}</div>
                 <div>
                   <div>{`Сдано: ${work.count} из ${work.allCount}`}</div>
-                  <Ellipse/>
+                  <Ellipse />
                   <div>{`На проверке: ${work.checkingCount}`}</div>
                 </div>
               </div>
               <div className={styles.progress}>
                 <div className={`${styles.text} ${work.percent >= 70 ? styles.cool : ''}`}>{`${work.percent}%`}</div>
-                <figure style={{margin: '0'}}>
-                  <svg viewBox={'0 0 60 60'} width={"100%"} height={"100%"}>
-                    {work.percent >= 70 ? <linearGradient id={`gradient${index}`} x1="80%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#8BF3E1"/>
-                        <stop offset="100%" stopColor="#0C959D"/>
-                      </linearGradient> :
+                <figure style={{ margin: '0' }}>
+                  <svg viewBox={'0 0 60 60'} width={'100%'} height={'100%'}>
+                    {work.percent >= 70 ? (
                       <linearGradient id={`gradient${index}`} x1="80%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#FFD653"/>
-                        <stop offset="100%" stopColor="#F47231"/>
-                      </linearGradient>}
+                        <stop offset="0%" stopColor="#8BF3E1" />
+                        <stop offset="100%" stopColor="#0C959D" />
+                      </linearGradient>
+                    ) : (
+                      <linearGradient id={`gradient${index}`} x1="80%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#FFD653" />
+                        <stop offset="100%" stopColor="#F47231" />
+                      </linearGradient>
+                    )}
                     <circle
                       className="ring"
                       cx={30}
@@ -126,7 +129,7 @@ export const LittleCalendar = () => {
                       strokeWidth={4}
                       fill="transparent"
                       stroke={`url(#gradient${index})`}
-                      strokeDasharray={`${work.percent * (2 * Math.PI * 25) / 100} ${2 * Math.PI * 25}`}
+                      strokeDasharray={`${(work.percent * (2 * Math.PI * 25)) / 100} ${2 * Math.PI * 25}`}
                     />
                   </svg>
                 </figure>
