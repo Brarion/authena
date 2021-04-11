@@ -11,9 +11,20 @@ import { ReactComponent as Flag } from '../../assets/flag.svg'
 import { ReactComponent as Ellipse } from '../../assets/ellipse.svg'
 
 import styles from './styles.module.scss'
+
 import { calendarWorksMock } from '../../mock/mock'
+import { useClickAway } from '../../utils/useClickAway'
 
 export const LittleCalendar = () => {
+  const [openedYearDropdown, setOpenedYearDropdown] = React.useState<boolean>(false)
+  const [openedMonthDropdown, setOpenedMonthDropdown] = React.useState<boolean>(false)
+
+  const monthRef = React.useRef(null)
+  const yearRef = React.useRef(null)
+
+  useClickAway(monthRef, setOpenedMonthDropdown)
+  useClickAway(yearRef, setOpenedYearDropdown)
+
   const { currentDay, currentMonth, currentYear, monthCalendar, currentWorks } = useStore(calendarModel.$store)
 
   const getMonthName = (): string => {
@@ -37,13 +48,25 @@ export const LittleCalendar = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <div className={styles.dropdowns}>
-          <div className={styles.year}>
-            <div>{currentYear}</div>
-            <DropdownArrow />
-          </div>
-          <div className={styles.month}>
+          <div className={styles.month} ref={monthRef} onClick={() => setOpenedMonthDropdown(!openedMonthDropdown)}>
             <div>{getMonthName()}</div>
             <DropdownArrow />
+            {openedMonthDropdown && (
+              <>
+                <MonthDropdown currentMonth={currentMonth} handleClick={calendarModel.input.setMonth} />
+                <div className={styles.monthUnderline} />
+              </>
+            )}
+          </div>
+          <div className={styles.year} ref={yearRef} onClick={() => setOpenedYearDropdown(!openedYearDropdown)}>
+            <div>{currentYear}</div>
+            <DropdownArrow />
+            {openedYearDropdown && (
+              <>
+                <YearDropdown currentYear={currentYear} handleClick={calendarModel.input.setYear} />
+                <div className={styles.yearUnderline} />
+              </>
+            )}
           </div>
         </div>
         <div className={styles.buttons}>
@@ -137,6 +160,75 @@ export const LittleCalendar = () => {
             </div>
           ))
         )}
+      </div>
+    </div>
+  )
+}
+
+interface MonthDropdownProps {
+  currentMonth: number
+  handleClick: (month: number) => void
+}
+
+const MonthDropdown = ({ currentMonth, handleClick }: MonthDropdownProps) => {
+  return (
+    <div className={styles.months}>
+      {[
+        'Январь',
+        'Февраль',
+        'Март',
+        'Апрель',
+        'Май',
+        'Июнь',
+        'Июль',
+        'Август',
+        'Сентябрь',
+        'Октябрь',
+        'Ноябрь',
+        'Декабрь',
+      ].map((month, index) => (
+        <div
+          key={month}
+          className={currentMonth === index ? styles.selectedMonth : ''}
+          onClick={() => handleClick(index)}
+        >
+          {month}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+interface YearDropdownProps {
+  currentYear: number
+  handleClick: (year: number) => void
+}
+
+const YearDropdown = ({ currentYear, handleClick }: YearDropdownProps) => {
+  return (
+    <div className={styles.years}>
+      <div className={styles.currentYearButtons}>
+        <div onClick={() => handleClick(currentYear - 1)}>
+          <Left />
+        </div>
+        <div>{currentYear}</div>
+        <div onClick={() => handleClick(currentYear + 1)}>
+          <Right />
+        </div>
+      </div>
+      <div className={styles.content}>
+        {new Array(8)
+          .fill(0)
+          .map((_, index) => currentYear - 1 + index)
+          .map((year) => (
+            <div
+              key={year}
+              className={currentYear === year ? styles.selectedYear : ''}
+              onClick={() => handleClick(year)}
+            >
+              {year}
+            </div>
+          ))}
       </div>
     </div>
   )

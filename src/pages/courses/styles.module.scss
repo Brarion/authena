@@ -4,6 +4,7 @@
 
 .main {
   height: calc(100% - #{$headerHeight});
+  min-height: 850px;
 
   display: grid;
   grid-template-columns: grid-width(3) auto grid-width(4);

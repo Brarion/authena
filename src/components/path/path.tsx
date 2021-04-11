@@ -11,8 +11,6 @@ import styles from './styles.module.scss'
 export const Path = () => {
   const { path } = useStore(breadCrumbsModel.$store)
 
-  console.log(path)
-
   return (
     <div className={styles.path}>
       {path.length > 0 &&

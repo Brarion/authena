@@ -19,10 +19,10 @@ const incMonth = calendarDomain.createEvent()
 
 const setDay = calendarDomain.createEvent<Date>()
 
-const $currentDay = calendarDomain
-  .createStore<number>(new Date().getDate())
-  .on(setDay, (_, date) => date.getDate())
-  .on([incMonth, decMonth], () => 1)
+const $currentYear = calendarDomain
+  .createStore<number>(new Date().getFullYear())
+  .on(setYear, (_, year) => year)
+  .on(setDay, (_, date) => date.getFullYear())
 
 const $currentMonth = calendarDomain
   .createStore<number>(new Date().getMonth())
@@ -31,10 +31,11 @@ const $currentMonth = calendarDomain
   .on(incMonth, (currentMonth, _) => (currentMonth === 11 ? 0 : currentMonth + 1))
   .on(setDay, (_, date) => date.getMonth())
 
-const $currentYear = calendarDomain
-  .createStore<number>(new Date().getFullYear())
-  .on(setYear, (_, year) => year)
-  .on(setDay, (_, date) => date.getFullYear())
+const $currentDay = calendarDomain
+  .createStore<number>(new Date().getDate())
+  .on(setDay, (_, date) => date.getDate())
+  .on([$currentMonth.updates, $currentYear.updates], () => 1)
+  .on([incMonth, decMonth], () => 1)
 
 const $monthCalendar = calendarDomain.createStore<Date[]>(
   (function getInitialMonthCalendar() {
