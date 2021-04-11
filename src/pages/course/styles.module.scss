@@ -1,0 +1,140 @@
+@import '../../styles/grid.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/colors.scss';
+
+.main {
+  height: calc(100% - #{$headerHeight});
+  min-height: 850px;
+
+  display: grid;
+  grid-template-columns: grid-width(3) auto grid-width(4);
+  gap: 30px;
+
+  .mainWrapper {
+    overflow-y: auto;
+
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    > *:first-child {
+      margin-bottom: 20px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      margin-top: 40px;
+
+      .people {
+        display: flex;
+        flex-wrap: wrap;
+
+        font-size: 16px;
+        line-height: 21px;
+        color: $gray-2;
+
+        margin-bottom: 30px;
+
+        > * {
+          display: flex;
+          flex-wrap: wrap;
+
+          &:not(:last-child) {
+            margin-right: 30px;
+          }
+
+          > *:first-child {
+            margin-right: 10px;
+          }
+
+          > *:last-child {
+            font-size: 14px;
+            line-height: 19px;
+
+            color: $green-1;
+          }
+        }
+      }
+
+      .tasksWrapper {
+        display: flex;
+        flex-direction: column;
+
+        background-color: white;
+        border-radius: 20px;
+
+        height: calc(345px - 2 * 40px);
+        padding: 20px 40px 40px 40px;
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          margin-bottom: 10px;
+
+          font-size: 20px;
+          line-height: 27px;
+
+          > h2 {
+            color: $green-3;
+          }
+
+          .taskTypesWrapper {
+            display: flex;
+            flex-wrap: wrap;
+
+            font-size: 14px;
+            line-height: 19px;
+
+            color: $green-3;
+
+            > * {
+              display: flex;
+
+              margin-right: 40px;
+
+              > *:first-child {
+                margin-right: 10px;
+              }
+
+              >*:last-child {
+                white-space: pre-wrap;
+              }
+            }
+          }
+        }
+
+        .tasks {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+
+          .task {
+            width: calc(323px - 20px);
+            height: calc(248px - 15px - 20px);
+
+            padding: 15px 0 20px 20px;
+
+            background: white;
+            border: 1px solid #D6DBDB;
+            border-radius: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: $green-1;
+  }
+}

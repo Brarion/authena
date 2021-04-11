@@ -11,13 +11,14 @@ import { routesPaths } from '../routes/config'
 sample({
   source: guard({
     source: courseModel.$store,
-    filter: ({ currentCourse }) => Boolean(currentCourse),
+    filter: ({ currentCourse }) => currentCourse !== null,
   }),
+  clock: courseModel.$store.map((store) => store.currentCourse).updates,
   target: breadCrumbsModel.input.addPath,
   fn: ({ currentCourse }) => {
     console.log(currentCourse)
     return {
-      title: currentCourse!.title,
+      title: currentCourse!.name,
       path: `${routesPaths.courses.path}/${currentCourse!.id}`,
     }
   },

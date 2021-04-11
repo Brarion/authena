@@ -1,20 +1,17 @@
 import { combine, createDomain, forward } from 'effector'
 import { createReEffect } from 'effector-reeffect'
-import { coursesMock } from '../../mock/mock'
 import { createGate } from 'effector-react'
-
-type Course = { id: number; title: string; teachers: Array<{ name: string; surname: string; patronymic?: string }> }
+import { Course, CourseMock } from '../../mock/courseMock'
 
 const getCourseFx = createReEffect({
   handler: async (id: string) => {
-    const promise = new Promise<Course | null>((resolve, reject) =>
+    const promise = new Promise<Course | null>((resolve, reject) => {
       setTimeout(() => {
-        const course = coursesMock.find((course) => course.id === Number(id))
+        if (id === 'tmp') reject(null)
 
-        if (course !== undefined) resolve(course)
-        else reject(null)
-      }, 100)
-    )
+        resolve(CourseMock)
+      }, 500)
+    })
 
     const res: Course | null = await promise.then((course) => course).catch((error) => error)
 
@@ -35,6 +32,7 @@ $currentCourse.updates.watch(console.log)
 export const courseModel = {
   $store: combine({
     currentCourse: $currentCourse,
+    pending: getCourseFx.pending,
   }),
   courseGate,
 }
