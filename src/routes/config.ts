@@ -81,12 +81,12 @@ export const routesPaths = {
 
 export const menuRoutesPaths: Array<{ title: string; path: string }> = [
   {
-    title: 'Текущие курсы',
-    path: '/courses',
-  },
-  {
     title: 'Календарь',
     path: '/calendar',
+  },
+  {
+    title: 'Курсы',
+    path: '/courses',
   },
   {
     title: 'Статистика',

@@ -10,11 +10,18 @@ export enum TaskType {
   AUTOMATIC_CHECK = 'AUTOMATIC_CHECK',
 }
 
+export enum Status {
+  FIVE = 'выполнено успешно, оценка 5',
+  FOUR = 'выполнено успешно, оценка 4',
+  DONE = 'выполнено успешно',
+  WAITING = 'ожидает выполнения',
+}
+
 type Task = {
   name: string
   period: [Date, Date]
   countOfTry: [number, number]
-  status: string
+  status: Status
   type: TaskType
 }
 
@@ -55,21 +62,21 @@ export const CourseMock: Course = {
       name: 'Кинематика материальной точки',
       period: [new Date(2021, 0, 1), new Date(2021, 1, 28)],
       countOfTry: [4, 10],
-      status: 'выполнено успешно, оценка 4',
+      status: Status.FOUR,
       type: TaskType.TEST,
     },
     {
       name: 'Динамика материальной точки',
       period: [new Date(2021, 0, 1), new Date(2021, 1, 28)],
       countOfTry: [4, 10],
-      status: 'выполнено успешно, оценка 4',
+      status: Status.DONE,
       type: TaskType.MANUAL_CHECK,
     },
     {
       name: 'Динамика системы частиц',
       period: [new Date(2021, 0, 1), new Date(2021, 1, 28)],
       countOfTry: [4, 10],
-      status: 'выполнено успешно, оценка 4',
+      status: Status.WAITING,
       type: TaskType.AUTOMATIC_CHECK,
     },
   ],

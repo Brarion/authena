@@ -51,7 +51,7 @@ export const Menu = () => {
           {menuRoutesPaths.map((route) => (
             <a
               key={route.path}
-              className={`${styles.menuItem} ${location.pathname === route.path ? styles.currentItemMenu : ''}`}
+              className={`${styles.menuItem} ${location.pathname.startsWith(route.path) ? styles.currentItemMenu : ''}`}
               href={route.path}
             >
               {getIcon(route.path)}

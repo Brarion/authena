@@ -3,7 +3,7 @@
 @import '../../styles/colors.scss';
 
 .main {
-  height: calc(100% - #{$headerHeight});
+  height: calc(100% - #{$headerHeight} - #{$headerTopPadding} - #{$headerBottomPadding});
   min-height: 850px;
 
   display: grid;
@@ -11,7 +11,7 @@
   gap: 30px;
 
   .mainWrapper {
-    overflow-y: auto;
+    overflow: hidden;
 
     .loader {
       display: flex;
@@ -52,7 +52,7 @@
             margin-right: 10px;
           }
 
-          > *:last-child {
+          > *:not(:first-child) {
             font-size: 14px;
             line-height: 19px;
 
@@ -68,8 +68,10 @@
         background-color: white;
         border-radius: 20px;
 
-        height: calc(345px - 2 * 40px);
-        padding: 20px 40px 40px 40px;
+        height: calc(345px - 2 * 40px + 30px + 40px);
+        padding: 20px 40px 0 40px;
+        margin-bottom: 30px;
+        overflow: hidden;
 
         .header {
           display: flex;
@@ -83,6 +85,8 @@
 
           > h2 {
             color: $green-3;
+            margin-bottom: 10px;
+            margin-right: 30px;
           }
 
           .taskTypesWrapper {
@@ -92,18 +96,21 @@
             font-size: 14px;
             line-height: 19px;
 
+            overflow: hidden;
+
             color: $green-3;
 
             > * {
               display: flex;
 
               margin-right: 40px;
+              margin-bottom: 10px;
 
               > *:first-child {
                 margin-right: 10px;
               }
 
-              >*:last-child {
+              > *:last-child {
                 white-space: pre-wrap;
               }
             }
@@ -114,16 +121,135 @@
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
+          overflow-y: auto;
+
+          min-height: 250px;
 
           .task {
-            width: calc(323px - 20px);
+            position: relative;
+            width: calc(323px - 2 * 20px);
             height: calc(248px - 15px - 20px);
 
-            padding: 15px 0 20px 20px;
+            padding: 15px 20px 20px 20px;
 
             background: white;
-            border: 1px solid #D6DBDB;
+            border: 1px solid $gray-7;
             border-radius: 20px;
+
+            margin-bottom: 30px;
+
+            display: grid;
+            grid-template-rows: repeat(5, min-content);
+            gap: 10px;
+
+            &.great {
+              border-color: $green-7;
+            }
+
+            &.done {
+              border-color: $gray-2;
+              background-color: $gray-1;
+            }
+
+            &.waiting {
+              border-color: $gray-7;
+            }
+
+            &:hover {
+              cursor: pointer;
+            }
+
+            .flagGreat {
+              position: absolute;
+              right: 20px;
+            }
+
+            .title {
+              display: grid;
+              grid-template-columns: auto 1fr;
+              gap: 5px;
+
+              > * {
+                color: $green-1;
+                font-size: 16px;
+                line-height: 22px;
+                font-weight: 600;
+              }
+            }
+
+            .period, .status {
+
+              > *:first-child {
+                font-size: 16px;
+                line-height: 22px;
+                color: $gray-2;
+                font-weight: normal;
+                margin-bottom: 5px;
+              }
+
+              > *:last-child {
+                font-size: 14px;
+                line-height: 19px;
+                color: $green-1;
+              }
+            }
+
+            .countOfTry {
+              > *:first-child {
+                margin-right: 10px;
+
+                font-size: 16px;
+                line-height: 22px;
+                color: $gray-2;
+              }
+
+              >*:last-child {
+                font-size: 14px;
+                line-height: 19px;
+                color: $green-1;
+              }
+            }
+          }
+        }
+      }
+
+      .resourcesWrapper {
+        border-radius: 20px;
+        background-color: white;
+        padding: 20px 0 30px 0;
+
+        >*:first-child {
+          font-weight: bold;
+          font-size: 20px;
+          line-height: 27px;
+
+          color: $green-3;
+          padding: 0 40px;
+          margin-bottom: 20px;
+        }
+
+        .resources {
+          overflow: hidden;
+
+          .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #E0E0E0;
+          }
+
+          .resource {
+            padding: 0 40px;
+            margin: 9px 0;
+            display: flex;
+            align-items: center;
+
+            font-size: 16px;
+            line-height: 22px;
+            color: $green-1;
+            
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
       }

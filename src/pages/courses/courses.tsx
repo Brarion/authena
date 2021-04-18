@@ -21,7 +21,7 @@ export const Courses = () => {
   useTitle(routes.find((route) => route.path === location.pathname)?.title ?? '404')
 
   return (
-    <div style={{ height: '100%' }}>
+    <div style={{ height: '100vh' }}>
       <Header />
       <main className={styles.main}>
         <Menu />

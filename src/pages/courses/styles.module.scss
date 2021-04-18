@@ -3,7 +3,7 @@
 @import '../../styles/colors.scss';
 
 .main {
-  height: calc(100% - #{$headerHeight});
+  height: calc(100% - #{$headerHeight} - #{$headerTopPadding} - #{$headerBottomPadding});
   min-height: 850px;
 
   display: grid;
