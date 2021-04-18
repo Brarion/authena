@@ -18,6 +18,7 @@ export const Routes = () => {
           <Route key={route.path} path={route.path} exact={route.exact} component={route.component} />
         ))}
         <Redirect to={'/404'} />
+        <Redirect from={'/'} to={routes[0].path} />
       </Switch>
     </Suspense>
   )
