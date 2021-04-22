@@ -1,55 +1,61 @@
 import React from 'react'
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-import {useGate, useStore} from 'effector-react'
+import { useGate, useStore } from 'effector-react'
 
-import {Path} from '../../components/path'
-import {Header} from '../../components/header'
-import {Menu} from '../../components/menu'
-import {MainWrapper} from '../../components/mainWrapper'
-import {LittleCalendar} from '../../components/littleCalendar'
+import { Path } from '../../components/path'
+import { Header } from '../../components/header'
+import { Menu } from '../../components/menu'
+import { MainWrapper } from '../../components/mainWrapper'
+import { LittleCalendar } from '../../components/littleCalendar'
 
-import {ReactComponent as Test} from '../../assets/test.svg'
-import {ReactComponent as Manual} from '../../assets/manual.svg'
-import {ReactComponent as Automatic} from '../../assets/automatic.svg'
-import {ReactComponent as TaskGreat} from '../../assets/taskGreat.svg'
+import { ReactComponent as Test } from '../../assets/test.svg'
+import { ReactComponent as Manual } from '../../assets/manual.svg'
+import { ReactComponent as Automatic } from '../../assets/automatic.svg'
+import { ReactComponent as TaskGreat } from '../../assets/taskGreat.svg'
 
-import {courseModel} from '../../models'
+import { courseModel } from '../../models'
 
 import styles from './styles.module.scss'
 
-import {Status, TaskType} from '../../mock/courseMock'
+import { Status, TaskType } from '../../models/types'
+import { routesPaths } from '../../routes/config'
+import { useTitle } from '../../utils'
 
 export const Course = () => {
   const params: { id: string } = useParams()
 
   useGate(courseModel.courseGate, params.id)
 
-  const {currentCourse, pending} = useStore(courseModel.$store)
+  const { currentCourse, pending } = useStore(courseModel.$store)
+
+  useTitle(currentCourse?.name ?? 'Курс', [currentCourse])
 
   const getIcon = (type: TaskType): JSX.Element => {
     switch (type) {
       case TaskType.AUTOMATIC_CHECK:
-        return <Automatic/>
+        return <Automatic />
       case TaskType.MANUAL_CHECK:
-        return <Manual/>
+        return <Manual />
       case TaskType.TEST:
-        return <Test/>
+        return <Test />
+      default:
+        return <Test />
     }
   }
 
   return (
     <div>
-      <div style={{height: '100vh'}}>
-        <Header/>
+      <div style={{ height: '100vh' }}>
+        <Header />
         <main className={styles.main}>
-          <Menu/>
+          <Menu />
           <MainWrapper className={styles.mainWrapper}>
             {pending || currentCourse === null ? (
               <div className={styles.loader}>Загрузка...</div>
             ) : (
               <>
-                <Path/>
+                <Path />
                 <div className={styles.content}>
                   <div className={styles.people}>
                     <div>
@@ -82,15 +88,15 @@ export const Course = () => {
                       <h2>Задания</h2>
                       <div className={styles.taskTypesWrapper}>
                         <div>
-                          <Test/>
+                          <Test />
                           <div>с вариантами ответа</div>
                         </div>
                         <div>
-                          <Manual/>
+                          <Manual />
                           <div>с ручной проверкой</div>
                         </div>
                         <div>
-                          <Automatic/>
+                          <Automatic />
                           <div>по программированию с автоматизированной проверкой</div>
                         </div>
                       </div>
@@ -98,21 +104,23 @@ export const Course = () => {
                     <div className={styles.tasks}>
                       {currentCourse.tasks.length > 0 ? (
                         currentCourse.tasks.map((task, index) => (
-                          <div key={index}
-                               className={`${styles.task} ${
-                                 task.status === Status.FIVE || task.status === Status.FOUR
-                                   ? styles.great
-                                   : task.status === Status.DONE
-                                   ? styles.done
-                                   : styles.waiting
-                               }`}
+                          <a
+                            key={index}
+                            href={`${routesPaths.courses.path}/${currentCourse.id}/${task.id}`}
+                            className={`${styles.task} ${
+                              task.status === Status.FIVE || task.status === Status.FOUR
+                                ? styles.great
+                                : task.status === Status.DONE
+                                ? styles.done
+                                : styles.waiting
+                            }`}
                           >
                             {task.status === Status.FIVE ||
-                            (task.status === Status.FOUR && (
-                              <div className={styles.flagGreat}>
-                                <TaskGreat/>
-                              </div>
-                            ))}
+                              (task.status === Status.FOUR && (
+                                <div className={styles.flagGreat}>
+                                  <TaskGreat />
+                                </div>
+                              ))}
                             <div className={styles.icon}>{getIcon(task.type)}</div>
 
                             <div className={styles.title}>
@@ -134,7 +142,7 @@ export const Course = () => {
                               <h2>Текущий статус:</h2>
                               <div>{task.status}</div>
                             </div>
-                          </div>
+                          </a>
                         ))
                       ) : (
                         <div>пусто</div>
@@ -147,21 +155,21 @@ export const Course = () => {
                       <div className={styles.resources}>
                         {currentCourse.resources.map((resource, index) => (
                           <React.Fragment key={index}>
-                            <div className={styles.divider}/>
+                            <div className={styles.divider} />
                             <div className={styles.resource}>{resource}</div>
-                            {currentCourse!.resources.length === index + 1 && <div className={styles.divider}/>}
+                            {currentCourse!.resources.length === index + 1 && <div className={styles.divider} />}
                           </React.Fragment>
                         ))}
                       </div>
                     ) : (
-                      <div>Пусто 😥</div>
+                      <div className={styles.resource}>Пусто 😥</div>
                     )}
                   </div>
                 </div>
               </>
             )}
           </MainWrapper>
-          <LittleCalendar/>
+          <LittleCalendar />
         </main>
       </div>
     </div>

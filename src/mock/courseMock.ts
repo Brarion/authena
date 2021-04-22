@@ -1,31 +1,4 @@
-type FIO = {
-  name: string
-  surname: string
-  patronymic?: string
-}
-
-export enum TaskType {
-  TEST = 'TEST',
-  MANUAL_CHECK = 'MANUAL_CHECK',
-  AUTOMATIC_CHECK = 'AUTOMATIC_CHECK',
-}
-
-export enum Status {
-  FIVE = 'выполнено успешно, оценка 5',
-  FOUR = 'выполнено успешно, оценка 4',
-  DONE = 'выполнено успешно',
-  WAITING = 'ожидает выполнения',
-}
-
-type Task = {
-  name: string
-  period: [Date, Date]
-  countOfTry: [number, number]
-  status: Status
-  type: TaskType
-}
-
-type Resource = string
+import {FIO, Resource, Status, Task, TaskType} from "../models/types";
 
 export type Course = {
   id: string
@@ -59,6 +32,7 @@ export const CourseMock: Course = {
   ],
   tasks: [
     {
+      id: '0',
       name: 'Кинематика материальной точки',
       period: [new Date(2021, 0, 1), new Date(2021, 1, 28)],
       countOfTry: [4, 10],
@@ -66,6 +40,7 @@ export const CourseMock: Course = {
       type: TaskType.TEST,
     },
     {
+      id: '1',
       name: 'Динамика материальной точки',
       period: [new Date(2021, 0, 1), new Date(2021, 1, 28)],
       countOfTry: [4, 10],
@@ -73,6 +48,7 @@ export const CourseMock: Course = {
       type: TaskType.MANUAL_CHECK,
     },
     {
+      id: '2',
       name: 'Динамика системы частиц',
       period: [new Date(2021, 0, 1), new Date(2021, 1, 28)],
       countOfTry: [4, 10],

@@ -3,6 +3,7 @@ import { AppRoute } from './types'
 
 const Courses = lazy(() => import('../pages/courses/index').then((page) => ({ default: page.Courses })))
 const Course = lazy(() => import('../pages/course/index').then((page) => ({ default: page.Course })))
+const Task = lazy(() => import('../pages/task/index').then((page) => ({ default: page.Task })))
 const CompletedCourses = lazy(() =>
   import('../pages/completedCourses/index').then((page) => ({ default: page.CompletedCourses }))
 )
@@ -19,10 +20,16 @@ export const routes: AppRoute[] = [
     component: Courses,
   },
   {
-    title: 'Курс',
+    title: 'Задание',
     path: '/courses/:id',
     exact: true,
     component: Course,
+  },
+  {
+    title: 'Курс',
+    path: '/courses/:courseID/:taskID',
+    exact: true,
+    component: Task,
   },
   {
     title: 'Успешно завершенные курсы',
