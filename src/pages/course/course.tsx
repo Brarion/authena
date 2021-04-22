@@ -17,6 +17,7 @@ import {ReactComponent as TaskGreat} from '../../assets/taskGreat.svg'
 import {courseModel} from '../../models'
 
 import styles from './styles.module.scss'
+
 import {Status, TaskType} from '../../mock/courseMock'
 
 export const Course = () => {
@@ -153,7 +154,7 @@ export const Course = () => {
                         ))}
                       </div>
                     ) : (
-                      <div>Нет</div>
+                      <div>Пусто 😥</div>
                     )}
                   </div>
                 </div>
