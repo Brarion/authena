@@ -1,7 +1,7 @@
-import { combine, createDomain, forward } from 'effector'
-import { createReEffect } from 'effector-reeffect'
-import { createGate } from 'effector-react'
-import { Course, CourseMock } from '../../mock/courseMock'
+import {combine, createDomain, forward} from 'effector'
+import {createReEffect} from 'effector-reeffect'
+import {createGate} from 'effector-react'
+import {Course, CourseMock} from '../../mock/courseMock'
 
 const getCourseFx = createReEffect({
   handler: async (id: string) => {
@@ -25,12 +25,12 @@ const courseDomain = createDomain('course')
 
 const $currentCourse = courseDomain.createStore<Course | null>(null).on(getCourseFx.doneData, (_, course) => course)
 
-forward({ from: courseGate.open, to: getCourseFx })
+forward({from: courseGate.open, to: getCourseFx})
 
 $currentCourse.updates.watch(console.log)
 
 export const courseModel = {
-  $store: combine({
+  $store: combine<{ currentCourse: Course | null, pending: boolean }>({
     currentCourse: $currentCourse,
     pending: getCourseFx.pending,
   }),

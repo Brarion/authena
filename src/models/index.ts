@@ -15,13 +15,10 @@ sample({
   }),
   clock: courseModel.$store.map((store) => store.currentCourse).updates,
   target: breadCrumbsModel.input.addPath,
-  fn: ({ currentCourse }) => {
-    console.log(currentCourse)
-    return {
+  fn: ({ currentCourse }) => ({
       title: currentCourse!.name,
       path: `${routesPaths.courses.path}/${currentCourse!.id}`,
-    }
-  },
+  }),
 })
 
 export { breadCrumbsModel, courseModel, calendarModel, searchModel, userModel }
