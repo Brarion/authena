@@ -1,0 +1,83 @@
+@import '../../../styles/colors';
+
+.automaticTask {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+
+  > *:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  .step {
+    display: flex;
+
+    .stepCount {
+      margin-right: 10px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 25px;
+
+      background-color: $gray-2;
+      border-radius: 15px;
+
+      &.done {
+        background: linear-gradient(129.46deg, #8BF3E1 1.81%, #0C959D 100%), #F5F7F7;
+      }
+    }
+
+    .contentPart {
+      display: flex;
+      flex-direction: column;
+
+      margin-top: 5px;
+
+      > *:first-child {
+        font-size: 14px;
+        line-height: 19px;
+
+        color: $green-2;
+
+        margin-bottom: 15px;
+      }
+
+      > *:last-child {
+        display: flex;
+
+        > *:not(:last-child) {
+          margin-right: 20px;
+        }
+
+        .language {
+          padding: 15px 20px;
+
+          background-color: $gray-1;
+
+          border-radius: 15px;
+
+          font-size: 14px;
+          line-height: 19px;
+          color: $green-2;
+
+          &:hover {
+            cursor: pointer;
+            box-shadow: 1px 1px 3px rgb(4 55 48 / 37%);
+          }
+
+          &.selectedLanguage {
+            color: white;
+            background: linear-gradient(129.46deg, #FFD653 1.81%, #EF4B23 100%), #F5F7F7;
+          }
+        }
+      }
+    }
+  }
+}
