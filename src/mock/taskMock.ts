@@ -15,6 +15,8 @@ export enum TaskStatus {
 export type Task = {
   id: string
   name: string
+  courseName: string
+  courseID: string
   status: TaskStatus
   statusDate: Date | null
   teacher: FIO
@@ -27,6 +29,8 @@ export type Task = {
 export const TaskMock: Task = {
   id: '0',
   name: 'Кинематика материальной точки',
+  courseName: 'Концепции и модели физики. Механика',
+  courseID: '0',
   status: TaskStatus.FIVE,
   statusDate: new Date(2021, 2, 5),
   teacher: {

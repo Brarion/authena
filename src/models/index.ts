@@ -5,6 +5,7 @@ import { courseModel } from './course'
 import { calendarModel } from './calendar'
 import { searchModel } from './search'
 import { userModel } from './user'
+import { taskModel } from './task'
 
 import { routesPaths } from '../routes/config'
 
@@ -16,9 +17,25 @@ sample({
   clock: courseModel.$store.map((store) => store.currentCourse).updates,
   target: breadCrumbsModel.input.addPath,
   fn: ({ currentCourse }) => ({
-      title: currentCourse!.name,
-      path: `${routesPaths.courses.path}/${currentCourse!.id}`,
+    title: currentCourse!.name,
+    path: `${routesPaths.courses.path}/${currentCourse!.id}`,
   }),
 })
 
-export { breadCrumbsModel, courseModel, calendarModel, searchModel, userModel }
+sample({
+  source: guard({
+    source: taskModel.$store,
+    filter: ({ task }) => task !== null,
+  }),
+  clock: taskModel.$store.map((store) => store.task).updates,
+  target: breadCrumbsModel.input.addFullPath,
+  fn: ({ task }) => [
+    { title: task!.courseName, path: `${routesPaths.courses.path}/${task!.courseID}` },
+    {
+      title: task!.name,
+      path: `${routesPaths.courses.path}/${task!.id}`,
+    },
+  ],
+})
+
+export { breadCrumbsModel, courseModel, calendarModel, searchModel, userModel, taskModel }

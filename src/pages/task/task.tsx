@@ -5,8 +5,9 @@ import { Header } from '../../components/header'
 import styles from './styles.module.scss'
 import { Menu } from '../../components/menu'
 import { MainWrapper } from '../../components/mainWrapper'
+import { Path } from '../../components/path'
 import { useGate, useStore } from 'effector-react'
-import { taskModel } from '../../models/task/task'
+import { taskModel } from '../../models'
 import { useTitle } from '../../utils'
 import { Resource } from '../../models/types'
 
@@ -15,7 +16,7 @@ export const Task = () => {
 
   useGate(taskModel.taskGate, params.taskID)
 
-  const { task } = useStore(taskModel.$store)
+  const { task, pending } = useStore(taskModel.$store)
 
   useTitle(task?.name ?? 'Задание', [task])
 
@@ -26,7 +27,13 @@ export const Task = () => {
         <main className={styles.main}>
           <Menu />
           <MainWrapper className={styles.mainWrapper}>
-            <div>hello</div>
+            {pending || task === null ? (
+              <div>Загрузка...</div>
+            ) : (
+              <>
+                <Path />
+              </>
+            )}
           </MainWrapper>
           <Resources resources={task?.resources ?? []} />
         </main>

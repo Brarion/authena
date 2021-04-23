@@ -31,8 +31,9 @@ forward({
 })
 
 export const taskModel = {
-  $store: combine<{ task: Task | null }>({
+  $store: combine<{ task: Task | null; pending: boolean }>({
     task: $task,
+    pending: getTaskFx.pending,
   }),
   taskGate,
 }
