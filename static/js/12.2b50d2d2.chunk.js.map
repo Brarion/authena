@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/statistics/statistics.tsx"],"names":["Statistics"],"mappings":"sKAEaA,EAAa,WACxB,OAAO","file":"static/js/12.2b50d2d2.chunk.js","sourcesContent":["import React from 'react'\r\n\r\nexport const Statistics = () => {\r\n  return <div>Statistics</div>\r\n}\r\n"],"sourceRoot":""}

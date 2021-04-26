@@ -1,0 +1,2 @@
+(this.webpackJsonpauthena=this.webpackJsonpauthena||[]).push([[10],{54:function(n,t,r){"use strict";r.r(t),r.d(t,"Error404",(function(){return u}));r(0);var e=r(9),u=function(){return Object(e.jsx)("div",{children:"404"})}}}]);
+//# sourceMappingURL=10.8978b2f4.chunk.js.map

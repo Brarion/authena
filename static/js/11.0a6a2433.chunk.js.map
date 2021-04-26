@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/help/help.tsx"],"names":["Help"],"mappings":"gKAEaA,EAAO,WAClB,OAAO","file":"static/js/11.0a6a2433.chunk.js","sourcesContent":["import React from 'react'\r\n\r\nexport const Help = () => {\r\n  return <div>Help</div>\r\n}\r\n"],"sourceRoot":""}

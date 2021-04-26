@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/calendar/calendar.tsx"],"names":["Calendar"],"mappings":"mKAEaA,EAAW,WACtB,OAAO","file":"static/js/8.7079c886.chunk.js","sourcesContent":["import React from 'react'\r\n\r\nexport const Calendar = () => {\r\n  return <div>Calendar</div>\r\n}\r\n"],"sourceRoot":""}

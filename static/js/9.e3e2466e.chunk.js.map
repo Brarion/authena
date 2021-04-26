@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/completedCourses/compleredCourses.tsx"],"names":["CompletedCourses"],"mappings":"2KAEaA,EAAmB,WAC9B,OAAO","file":"static/js/9.e3e2466e.chunk.js","sourcesContent":["import React from 'react'\r\n\r\nexport const CompletedCourses = () => {\r\n  return <div>CompletedCourses</div>\r\n}\r\n"],"sourceRoot":""}
