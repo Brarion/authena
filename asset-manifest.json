@@ -6,8 +6,8 @@
     "static/js/1.4ca7fd76.chunk.js": "/authena/static/js/1.4ca7fd76.chunk.js",
     "static/js/1.4ca7fd76.chunk.js.map": "/authena/static/js/1.4ca7fd76.chunk.js.map",
     "main.css": "/authena/static/css/main.cbb25013.chunk.css",
-    "main.js": "/authena/static/js/main.20ac9ad1.chunk.js",
-    "main.js.map": "/authena/static/js/main.20ac9ad1.chunk.js.map",
+    "main.js": "/authena/static/js/main.eb90185f.chunk.js",
+    "main.js.map": "/authena/static/js/main.eb90185f.chunk.js.map",
     "runtime-main.js": "/authena/static/js/runtime-main.dfec8742.js",
     "runtime-main.js.map": "/authena/static/js/runtime-main.dfec8742.js.map",
     "static/js/4.bc604632.chunk.js": "/authena/static/js/4.bc604632.chunk.js",
@@ -66,6 +66,6 @@
     "static/js/runtime-main.dfec8742.js",
     "static/js/4.bc604632.chunk.js",
     "static/css/main.cbb25013.chunk.css",
-    "static/js/main.20ac9ad1.chunk.js"
+    "static/js/main.eb90185f.chunk.js"
   ]
 }
