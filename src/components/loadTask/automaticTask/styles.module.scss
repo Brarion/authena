@@ -8,15 +8,25 @@
 
   > *:not(:last-child) {
     margin-bottom: 30px;
+
+    &:first-child {
+      margin-bottom: 20px;
+    }
   }
 
   .step {
     display: flex;
 
+    &.btnWrapper {
+      align-items: center;
+    }
+
     .stepCount {
       margin-right: 10px;
-      width: 30px;
-      height: 30px;
+      min-width: 30px;
+      max-width: 30px;
+      min-height: 30px;
+      max-height: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -46,11 +56,17 @@
 
         color: $green-2;
 
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
 
-      > *:last-child {
+      .languages {
         display: flex;
+        flex-wrap: wrap;
+        margin-top: 5px;
+
+        > * {
+          margin-bottom: 10px;
+        }
 
         > *:not(:last-child) {
           margin-right: 20px;
@@ -77,6 +93,66 @@
             background: linear-gradient(129.46deg, #FFD653 1.81%, #EF4B23 100%), #F5F7F7;
           }
         }
+      }
+
+
+      > label {
+        background: linear-gradient(129.46deg, #FFD653 1.81%, #EF4B23 100%), #F5F7F7;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        &.disabledLabel {
+          background: gray;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        &.labelWithBottomMargin {
+          margin-bottom: 28px;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .fileName {
+        color: $blue-2;
+        margin-bottom: 10px;
+      }
+
+      > input {
+        display: none;
+      }
+
+      .btn {
+        padding: 15px 20px;
+        border: none;
+        outline: none;
+
+        margin: 0;
+
+        border-radius: 15px;
+
+        font-size: 14px;
+        line-height: 19px;
+
+        &.btnDisabled {
+          background: $gray-1;
+          color: $green-2;
+
+          &:hover {
+            box-shadow: none;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 1px 1px 3px rgb(4 55 48 / 37%);
+        }
+
+        color: white;
+        background: linear-gradient(129.46deg, #FFD653 1.81%, #EF4B23 100%), #F5F7F7;
       }
     }
   }

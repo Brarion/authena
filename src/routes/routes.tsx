@@ -8,14 +8,14 @@ export const Routes = () => {
   React.useEffect(() => {
     console.log(
       {
-        title: routes.find((route) => route.path === `/${location.pathname.split('/').pop()}`)?.title ?? '404',
-        path: `/${location.pathname.split('/').pop()}`,
+        title: routes.find((route) => route.path === `/${location.pathname.split('/')[1]}`)?.title ?? '404',
+        path: `/${location.pathname.split('/')[1]}`,
       },
       location.pathname
     )
     breadCrumbsModel.input.setPath({
-      title: routes.find((route) => route.path === `/${location.pathname.split('/').pop()}`)?.title ?? '404',
-      path: `/${location.pathname.split('/').pop()}`,
+      title: routes.find((route) => route.path === `/${location.pathname.split('/')[1]}`)?.title ?? '404',
+      path: `/${location.pathname.split('/')[1]}`,
     })
   }, [])
 
