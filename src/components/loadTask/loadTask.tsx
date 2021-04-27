@@ -6,6 +6,7 @@ import { TestTask } from './testTask'
 import { Tabs } from './tabs'
 
 import styles from './styles.module.scss'
+import { TaskHistory } from './history'
 
 interface LoadTaskProps {
   taskType: TaskType
@@ -31,7 +32,7 @@ export const LoadTask = ({ taskType }: LoadTaskProps) => {
     <div className={styles.loadTaskWrapper}>
       <Tabs setTab={setTab} tab={tab} />
       {tab === 0 && getTask()}
-      {tab === 1 && <div>История попыток</div>}
+      {tab === 1 && <TaskHistory />}
     </div>
   )
 }
