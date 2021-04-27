@@ -20,7 +20,7 @@ export const Task = () => {
 
   useGate(taskModel.taskGate, params.taskID)
 
-  const { task, pending } = useStore(taskModel.$store)
+  const { task, taskPending } = useStore(taskModel.$store)
 
   useTitle(task?.name ?? 'Задание', [task])
 
@@ -57,7 +57,7 @@ export const Task = () => {
         <main className={styles.main}>
           <Menu />
           <MainWrapper className={styles.mainWrapper}>
-            {pending || task === null ? (
+            {taskPending || task === null ? (
               <div>Загрузка...</div>
             ) : (
               <>

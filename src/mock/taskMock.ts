@@ -26,6 +26,14 @@ export type Task = {
   resources: Resource[]
 }
 
+export type TryHistory = {
+  id: string
+  date: Date
+  file: string
+  comment: string
+  status: TaskStatus
+}
+
 export const TaskMock: Task = {
   id: '0',
   name: 'Кинематика материальной точки',
@@ -79,3 +87,42 @@ export const TaskMock: Task = {
     'Механика, Черкасов А. В., Бочаров Т.К., БГТУ им. Шухова, 2005г. PDF',
   ],
 }
+
+export const tryHistoryMock: TryHistory[] = [
+  {
+    id: '0',
+    date: new Date(2021, 2, 5),
+    file: 'hello-world.go',
+    comment: '',
+    status: TaskStatus.FIVE,
+  },
+  {
+    id: '1',
+    date: new Date(2021, 2, 4),
+    file: 'hello-world.go',
+    comment:
+      'иногда нужно определять новый тип ошибки, который содержит исходную ошибку, чтобы сохранить её для анализа с помощью кода',
+    status: TaskStatus.WAITING,
+  },
+  {
+    id: '2',
+    date: new Date(2021, 2, 3),
+    file: 'hello-world.go',
+    comment: 'на этапе статического анализа',
+    status: TaskStatus.WAITING,
+  },
+  {
+    id: '3',
+    date: new Date(2021, 2, 2),
+    file: 'hello-world.go',
+    comment: 'на этапе компиляции',
+    status: TaskStatus.WAITING,
+  },
+  {
+    id: '4',
+    date: new Date(2021, 2, 1),
+    file: 'hello-world.go',
+    comment: '',
+    status: TaskStatus.WAITING,
+  },
+]
