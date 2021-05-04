@@ -1,0 +1,35 @@
+@import '../../styles/colors';
+
+.wrapper {
+  width: calc(100vw - 2 * 25px);
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content{
+    width: 70%;
+    height: 300px;
+
+    padding: 50px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    background-color: $gray-1;
+    border: 3px solid $gray-4;
+    border-radius: 20px;
+
+    >*:first-child {
+      font-size: 150px;
+      font-weight: bold;
+      color: $green-1;
+    }
+
+    >*:last-child {
+      font-size: 100px;
+      margin: auto;
+    }
+  }
+}
