@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
 import { routes } from './config'
-import { breadCrumbsModel } from '../models/breadCrumbs'
+import { breadCrumbsModel } from '../models'
 
 export const Routes = () => {
   React.useEffect(() => {
@@ -18,8 +18,8 @@ export const Routes = () => {
         {routes.map((route) => (
           <Route key={route.path} path={route.path} exact={route.exact} component={route.component} />
         ))}
-        <Redirect from={'/'} to={routes[0].path} />
-        {/*<Redirect to={'/404'} />*/}
+        <Redirect exact from={'/'} to={'/courses'} />
+        <Redirect from={'*'} to={'/404'} />
       </Switch>
     </Suspense>
   )

@@ -25,8 +25,9 @@
     }
 
     .content {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: max-content 1fr max-content;
+      height: calc(100% - 40px - 27px - 30px);
 
       margin-top: 40px;
 
@@ -68,7 +69,6 @@
         background-color: white;
         border-radius: 20px;
 
-        height: calc(345px - 2 * 40px + 30px + 40px);
         padding: 20px 40px 0 40px;
         margin-bottom: 30px;
         overflow: hidden;
@@ -157,6 +157,7 @@
 
             &:hover {
               cursor: pointer;
+              box-shadow: 1px 1px 3px rgb(4 55 48 / 37%);
             }
 
             .flagGreat {
@@ -229,7 +230,8 @@
         }
 
         .resources {
-          overflow: hidden;
+          overflow-y: auto;
+          height: 168px;
 
           .divider {
             width: 100%;
@@ -249,6 +251,7 @@
             
             &:hover {
               cursor: pointer;
+              font-weight: 600;
             }
           }
         }

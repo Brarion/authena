@@ -27,10 +27,8 @@ const $currentCourse = courseDomain.createStore<Course | null>(null).on(getCours
 
 forward({ from: courseGate.open, to: getCourseFx })
 
-$currentCourse.updates.watch(console.log)
-
 export const courseModel = {
-  $store: combine({
+  $store: combine<{ currentCourse: Course | null; pending: boolean }>({
     currentCourse: $currentCourse,
     pending: getCourseFx.pending,
   }),

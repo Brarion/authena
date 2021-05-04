@@ -17,7 +17,10 @@ import { ReactComponent as TaskGreat } from '../../assets/taskGreat.svg'
 import { courseModel } from '../../models'
 
 import styles from './styles.module.scss'
-import { Status, TaskType } from '../../mock/courseMock'
+
+import { Status, TaskType } from '../../models/types'
+import { routesPaths } from '../../routes/config'
+import { useTitle } from '../../utils'
 
 export const Course = () => {
   const params: { id: string } = useParams()
@@ -26,6 +29,8 @@ export const Course = () => {
 
   const { currentCourse, pending } = useStore(courseModel.$store)
 
+  useTitle(currentCourse?.name ?? 'Курс', [currentCourse])
+
   const getIcon = (type: TaskType): JSX.Element => {
     switch (type) {
       case TaskType.AUTOMATIC_CHECK:
@@ -33,6 +38,8 @@ export const Course = () => {
       case TaskType.MANUAL_CHECK:
         return <Manual />
       case TaskType.TEST:
+        return <Test />
+      default:
         return <Test />
     }
   }
@@ -55,7 +62,7 @@ export const Course = () => {
                       <span>Авторы курса:</span>
                       {currentCourse.authors.length > 0 ? (
                         currentCourse.authors.map((author, index) => (
-                          <span>{`${author.surname} ${author.name[0]}. ${
+                          <span key={index}>{`${author.surname} ${author.name[0]}. ${
                             author.patronymic !== undefined ? `${author.patronymic[0]}.` : ''
                           }${currentCourse!.authors.length !== index + 1 ? `,\u00A0` : ''}`}</span>
                         ))
@@ -67,7 +74,7 @@ export const Course = () => {
                       <span>Преподаватели:</span>
                       {currentCourse.teachers.length > 0 ? (
                         currentCourse.teachers.map((teacher, index) => (
-                          <span>{`${teacher.surname} ${teacher.name[0]}. ${
+                          <span key={index}>{`${teacher.surname} ${teacher.name[0]}. ${
                             teacher.patronymic !== undefined ? `${teacher.patronymic[0]}.` : ''
                           }${currentCourse!.teachers.length !== index + 1 ? `,\u00A0` : ''}`}</span>
                         ))
@@ -97,7 +104,9 @@ export const Course = () => {
                     <div className={styles.tasks}>
                       {currentCourse.tasks.length > 0 ? (
                         currentCourse.tasks.map((task, index) => (
-                          <div
+                          <a
+                            key={index}
+                            href={`${routesPaths.courses.path}/${currentCourse.id}/${task.id}`}
                             className={`${styles.task} ${
                               task.status === Status.FIVE || task.status === Status.FOUR
                                 ? styles.great
@@ -133,7 +142,7 @@ export const Course = () => {
                               <h2>Текущий статус:</h2>
                               <div>{task.status}</div>
                             </div>
-                          </div>
+                          </a>
                         ))
                       ) : (
                         <div>пусто</div>
@@ -145,15 +154,15 @@ export const Course = () => {
                     {currentCourse.resources.length > 0 ? (
                       <div className={styles.resources}>
                         {currentCourse.resources.map((resource, index) => (
-                          <>
+                          <React.Fragment key={index}>
                             <div className={styles.divider} />
                             <div className={styles.resource}>{resource}</div>
                             {currentCourse!.resources.length === index + 1 && <div className={styles.divider} />}
-                          </>
+                          </React.Fragment>
                         ))}
                       </div>
                     ) : (
-                      <div>Нет</div>
+                      <div className={styles.resource}>Пусто 😥</div>
                     )}
                   </div>
                 </div>
