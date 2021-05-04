@@ -18,7 +18,7 @@ import { coursesMock } from '../../mock/mock'
 
 export const Courses = () => {
   // TODO set valid title
-  useTitle(routes.find((route) => route.path === location.pathname)?.title ?? 'Курсы')
+  useTitle(routes.find((route) => route.path === location.pathname)?.title ?? 'Authena')
 
   return (
     <div style={{ height: '100vh' }}>

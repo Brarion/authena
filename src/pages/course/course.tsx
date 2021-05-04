@@ -29,7 +29,7 @@ export const Course = () => {
 
   const { currentCourse, pending } = useStore(courseModel.$store)
 
-  useTitle(currentCourse?.name ?? 'Курс', [currentCourse])
+  useTitle(currentCourse?.name ?? 'Authena', [currentCourse])
 
   const getIcon = (type: TaskType): JSX.Element => {
     switch (type) {

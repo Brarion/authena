@@ -22,7 +22,7 @@ export const Task = () => {
 
   const { task, taskPending } = useStore(taskModel.$store)
 
-  useTitle(task?.name ?? 'Задание', [task])
+  useTitle(task?.name ?? 'Authena', [task])
 
   const getIcon = (type: TaskType): JSX.Element => {
     switch (type) {
