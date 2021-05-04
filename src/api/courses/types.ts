@@ -4,12 +4,14 @@ import Collator = Intl.Collator
 import { Student } from '../../types/student'
 import { Deadline } from '../../types/deadline'
 
+export type Token = string
+
+export type ID = string
+
 export type CreateCourseRequest = {
   started: boolean
   title: string
   period: CoursePeriod
-  collaborators?: string[]
-  students?: string[]
 }
 
 export type GetCourseResponse = {

@@ -9,105 +9,173 @@ import {
   GetAllCourseStudentsResponse,
   GetAllGroupsResponse,
   GetCourseResponse,
+  ID,
+  Token,
 } from './types'
 import { TError } from '../../types/error'
 import { http } from '../http'
 
 export const courseApi = {
-  addCourse: async (course: CreateCourseRequest): Promise<null | TError> => {
-    const res = await http.post('/courses', course)
+  addCourse: async ({ course, token }: { course: CreateCourseRequest; token: Token }): Promise<null | TError> => {
+    const res = await http.post('/courses', course, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
-  getCourses: async (): Promise<GetAllCoursesResponse | TError> => {
-    const res = await http.get('/courses')
+  getCourses: async (token: Token): Promise<GetAllCoursesResponse | TError> => {
+    const res = await http.get('/courses', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
-  getCourseById: async (courseId: string): Promise<GetCourseResponse | TError> => {
-    const res = await http.get(`/courses/${courseId}`)
+  getCourseById: async ({ courseId, token }: { courseId: ID; token: Token }): Promise<GetCourseResponse | TError> => {
+    const res = await http.get(`/courses/${courseId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
   editCourseById: async ({
     courseId,
     course,
+    token,
   }: {
-    courseId: string
+    courseId: ID
     course: EditCourseRequest
+    token: Token
   }): Promise<null | TError> => {
-    const res = await http.patch(`/courses/${courseId}`, course)
+    const res = await http.patch(`/courses/${courseId}`, course, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
   extendCourseById: async ({
     courseId,
     course,
+    token,
   }: {
-    courseId: string
+    courseId: ID
     course: ExtendCourseRequest
+    token: Token
   }): Promise<null | TError> => {
-    const res = await http.post(`/courses/${courseId}/extended`, course)
+    const res = await http.post(`/courses/${courseId}/extended`, course, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
   createManualCheckingTasks: async ({
     courseId,
     course,
+    token,
   }: {
-    courseId: string
+    courseId: ID
     course: CreateManualCheckingTaskRequest
+    token: Token
   }): Promise<null | TError> => {
-    const res = await http.post(`/courses/${courseId}/manual-checking-tasks`, course)
+    const res = await http.post(`/courses/${courseId}/manual-checking-tasks`, course, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
-  getAllCoursesCollaboratorsByCourseId: async (
-    courseId: string
-  ): Promise<GetAllCourseCollaboratorsResponse | TError> => {
-    const res = await http.get(`/courses/${courseId}/collaborators`)
+  getAllCoursesCollaboratorsByCourseId: async ({
+    courseId,
+    token,
+  }: {
+    courseId: ID
+    token: Token
+  }): Promise<GetAllCourseCollaboratorsResponse | TError> => {
+    const res = await http.get(`/courses/${courseId}/collaborators`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
   addCollaboratorsToCourseByCourseId: async ({
     courseId,
     collaboratorsId,
+    token,
   }: {
-    courseId: string
+    courseId: ID
     collaboratorsId: AddCollaboratorsToCourseRequest
+    token: Token
   }): Promise<null | TError> => {
-    const res = await http.patch(`/courses/${courseId}/collaborators`, collaboratorsId)
+    const res = await http.patch(`/courses/${courseId}/collaborators`, collaboratorsId, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
   deleteCollaboratorFromCourseByCourseId: async ({
     courseId,
     teacherId,
+    token,
   }: {
-    courseId: string
-    teacherId: string
+    courseId: ID
+    teacherId: ID
+    token: Token
   }): Promise<null | TError> => {
-    const res = await http.delete(`/courses/${courseId}/collaborators/${teacherId}`)
+    const res = await http.delete(`/courses/${courseId}/collaborators/${teacherId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
-  getCourseStudentsByCourseId: async (courseId: string): Promise<GetAllCourseStudentsResponse | TError> => {
+  getCourseStudentsByCourseId: async (courseId: ID): Promise<GetAllCourseStudentsResponse | TError> => {
     const res = await http.get(`/courses/${courseId}/students`)
     return res.data
   },
   addStudentsToCourseByCourseId: async ({
     courseId,
     studentsIds,
+    token,
   }: {
-    courseId: string
-    studentsIds: string[]
+    courseId: ID
+    studentsIds: ID[]
+    token: Token
   }): Promise<null | TError> => {
-    const res = await http.patch(`/courses/${courseId}/students`, studentsIds)
+    const res = await http.patch(`/courses/${courseId}/students`, studentsIds, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
   deleteStudentFromCourseByCourseId: async ({
     courseId,
     studentId,
+    token,
   }: {
-    courseId: string
-    studentId: string
+    courseId: ID
+    studentId: ID
+    token: Token
   }): Promise<null | TError> => {
-    const res = await http.delete(`/courses/${courseId}/students/${studentId}`)
+    const res = await http.delete(`/courses/${courseId}/students/${studentId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
-  getAllGroups: async (): Promise<GetAllGroupsResponse | TError> => {
-    const res = await http.get('/groups')
+  getAllGroups: async (token: Token): Promise<GetAllGroupsResponse | TError> => {
+    const res = await http.get('/groups', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     return res.data
   },
 }
