@@ -30,7 +30,7 @@ const $taskSent = automaticTaskDomain.createStore<boolean>(false).on(sendTaskFx.
 forward({ from: sendTask, to: sendTaskFx })
 
 export const automaticTaskModel = {
-  $store: combine<{ language: string; file: File; taskSent: boolean }>({
+  $store: combine<{ language: string; file: File | null; taskSent: boolean }>({
     language: $language,
     file: $file,
     taskSent: $taskSent,
