@@ -7,5 +7,7 @@ export type Course = {
   period: CoursePeriod
   creator: Teacher
   started: boolean
-  taskNumber: number
+  tasksNumber: number
+  teachers: Teacher[]
+  percents: number
 }

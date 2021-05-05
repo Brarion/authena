@@ -1,0 +1,1 @@
+export { coursesModel } from './courses'

@@ -20,7 +20,7 @@ export type GetCourseResponse = {
   period: CoursePeriod
   creator: Teacher
   started: boolean
-  taskNumber: number
+  tasksNumber: number
 }
 
 export type GetAllCoursesResponse = GetCourseResponse[]
@@ -44,10 +44,7 @@ export type CreateManualCheckingTaskRequest = {
   deadline: Deadline
 }
 
-export type GetAllCourseCollaboratorsResponse = {
-  id: string
-  fullName: string
-}
+export type GetAllCourseCollaboratorsResponse = Teacher[][]
 
 export type AddCollaboratorsToCourseRequest = string[]
 
