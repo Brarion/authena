@@ -20,7 +20,7 @@ const $path = breadCrumbsDomain
 $path.updates.watch(console.log)
 
 export const breadCrumbsModel = {
-  $store: combine({
+  $store: combine<{ path: Path[] }>({
     path: $path,
   }),
   input: {

@@ -7,32 +7,4 @@
   min-width: 350px;
 
   padding: 30px 30px 0 30px;
-
-  &.loading {
-    background: linear-gradient(to right, $gray-8, $gray-1, $gray-8);
-    //background: linear-gradient(to right, black 8%, rgb(240, 240, 240) 18%, black 33%);
-    animation: background 5s infinite ease;
-    //background: transparent;
-  }
 }
-
-@keyframes background {
-   50% {
-     background-position: calc(100vw - 1000px) 0;
-   }
-  100% {
-    background-position: 0 0 ;
-  }
- }
-
-//@keyframes background {
-//  0% {
-//    background: linear-gradient(to right, white 0%, black 30%);
-//  }
-//  50% {
-//    background: linear-gradient(to right, black 15%, white 50%, black 65%);
-//  }
-//  100% {
-//    background: linear-gradient(to right, white 70%, white 100%);
-//  }
-//}
