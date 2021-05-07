@@ -38,7 +38,7 @@ export const routes: AppRoute[] = [
     component: CompletedCourses,
   },
   {
-    title: 'Календарь',
+    title: 'Календарь сдачи работ',
     path: '/calendar',
     exact: true,
     component: Calendar,

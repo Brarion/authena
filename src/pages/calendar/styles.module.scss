@@ -1,0 +1,39 @@
+@import '../../styles/grid.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/colors.scss';
+
+.main {
+  height: calc(100% - #{$headerHeight} - #{$headerTopPadding} - #{$headerBottomPadding});
+  min-height: 850px;
+
+  display: grid;
+  grid-template-columns: grid-width(3) auto grid-width(4);
+  gap: 30px;
+
+  .mainWrapper {
+    overflow-y: auto;
+
+    >*:first-child {
+      margin-bottom: 20px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      > * {
+        margin-bottom: 30px;
+      }
+
+      flex-wrap: wrap;
+    }
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: $green-1;
+  }
+}

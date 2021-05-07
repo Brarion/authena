@@ -1,0 +1,1 @@
+export { fullCalendarModel } from './fullCalendar'

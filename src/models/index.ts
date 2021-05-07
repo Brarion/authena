@@ -6,6 +6,7 @@ import { calendarModel } from './calendar'
 import { searchModel } from './search'
 import { userModel } from './user'
 import { taskModel } from './task'
+import { fullCalendarModel } from './fullCalendar'
 
 import { routesPaths } from '../routes/config'
 
@@ -38,4 +39,4 @@ sample({
   ],
 })
 
-export { breadCrumbsModel, courseModel, calendarModel, searchModel, userModel, taskModel }
+export { breadCrumbsModel, courseModel, calendarModel, searchModel, userModel, taskModel, fullCalendarModel }
