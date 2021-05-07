@@ -1,6 +1,19 @@
 @import '../../styles/grid.scss';
 @import '../../styles/colors.scss';
 
+.value {
+  user-select: none;
+}
+
+.arrow {
+  transition: transform 0.2s ease-out;
+  transform: scaleY(1);
+  &.rotated {
+    transition: transform 0.2s ease-in;
+    transform: scaleY(-1);
+  }
+}
+
 // Months dropdown
 .months {
   position: absolute;

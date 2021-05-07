@@ -13,33 +13,17 @@ import styles from './styles.module.scss'
 
 import { calendarWorksMock } from '../../mock/mock'
 import { TimeDropdown } from '../calendarDropdowns'
+import { getMonthName } from '../../utils'
 
 export const LittleCalendar = () => {
   const { currentDay, currentMonth, currentYear, monthCalendar, currentWorks } = useStore(calendarModel.$store)
-
-  const getMonthName = (): string => {
-    return [
-      'Январь',
-      'Февраль',
-      'Март',
-      'Апрель',
-      'Май',
-      'Июнь',
-      'Июль',
-      'Август',
-      'Сентябрь',
-      'Октябрь',
-      'Ноябрь',
-      'Декабрь',
-    ][currentMonth]
-  }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <div className={styles.dropdowns}>
           <TimeDropdown
-            valueName={getMonthName()}
+            valueName={getMonthName(currentMonth)}
             currentValue={currentMonth}
             handleClick={calendarModel.input.setMonth}
             month

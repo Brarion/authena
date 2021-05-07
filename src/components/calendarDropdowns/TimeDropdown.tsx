@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { ReactComponent as DropdownArrow } from '../../assets/dropdownArrow.svg'
-import { useClickAway } from '../../utils/useClickAway'
+import { useClickAway } from '../../utils'
 import { ReactComponent as Left } from '../../assets/left.svg'
 import { ReactComponent as Right } from '../../assets/right.svg'
 
@@ -22,8 +22,8 @@ export const TimeDropdown = ({ month, year, valueName, currentValue, handleClick
 
   return (
     <div ref={ref} onClick={() => setOpenedDropdown(!openedDropdown)}>
-      <div>{valueName}</div>
-      <DropdownArrow />
+      <div className={styles.value}>{valueName}</div>
+      <DropdownArrow className={`${styles.arrow} ${openedDropdown ? styles.rotated : ''}`} />
       {openedDropdown && (
         <>
           {month ? (
